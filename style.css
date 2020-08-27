@@ -1,13 +1,15 @@
+
+
 body {
     margin: 10px;
     box-sizing: border-box;
     overflow: hidden;
+    font-family: 'MinecraftiaRegular';
 }
 
 .screen-container {
     display: flex;
     flex-direction: row-reverse;
-    align-items: flex-end;
     justify-content: flex-end;
     height: 100%;
 }
@@ -23,26 +25,51 @@ body {
 .tool-bar {
    display: flex;
    flex-direction: column;
-   justify-content: center;  
+   justify-content: space-around;  
    align-items: center; 
+   box-sizing: border-box;
    width: 150px;
    height: 550px;
    margin-left: 10px;
    background: black;
+   color: white;
+}
+
+.tool-bar h4 {
+    margin:0;
 }
 
 .tool-bar .tool img{
     width: 80px;
-    height: 120px;
-    margin: auto;
-    border: 7px solid grey;
+    height: 110px;
+    box-sizing: border-box;
+    border: 6px solid grey;
+
+}
+
+.tool {
+    box-sizing: border-box;
+    height: 112px;
+    border: 1px solid transparent;
+}
+
+.tool:hover {
+    border: 1px solid white;
 }
 
 .inventory .curr-tile {
+    box-sizing: border-box;
     width: 50px;
     height: 50px;
-    margin-top: 10px;
     border: 5px solid gray;
+}
+
+.inventory {
+    border: 1px solid transparent;
+}
+
+.inventory:hover {
+    border: 1px solid white;
 }
 
 .tile {

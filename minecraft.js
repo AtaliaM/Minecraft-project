@@ -19,11 +19,13 @@ function createMap() {
 
     ];
 
+    let tileId = 1;
     for (let rows = 0; rows < matrix.length; rows++) {
 
         for (let cols = 0; cols < matrix[rows].length; cols++) {
             const tile = document.createElement("div");
             tile.classList.add("tile");
+            tile.setAttribute("id", String(tileId));
 
             if (matrix[rows][cols] === 0) {
                 tile.classList.add("sky");
@@ -42,6 +44,7 @@ function createMap() {
             }
 
             mapContainer.appendChild(tile);
+            tileId++;
         }
     }
 }
