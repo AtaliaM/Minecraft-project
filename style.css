@@ -1,0 +1,86 @@
+body {
+    margin: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.screen-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+
+.map-container {
+    display: grid;
+    grid-template-columns: repeat(20,50px);
+    grid-template-rows: repeat(11, 50px);
+    height: 100vh;
+}
+
+.tool-bar {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;  
+   align-items: center; 
+   width: 150px;
+   height: 550px;
+   margin-left: 10px;
+   background: black;
+}
+
+.tool-bar .tool img{
+    width: 80px;
+    height: 120px;
+    margin: auto;
+    border: 7px solid grey;
+}
+
+.inventory .curr-tile {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+    border: 5px solid gray;
+}
+
+.tile {
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+}
+
+.tile:hover {
+    border:1px solid white;
+}
+
+
+.sky {
+    /* background: rgb(0, 153, 255); */
+    background: url(./photos/sky.png) center center/cover;
+}
+
+ .dirt {
+    /* background: rgb(109, 50, 50); */
+    background: url(./photos/dirt-bottom.png) center center/cover;
+
+}
+
+.rocks {
+    /* background: grey; */
+    background: url(./photos/rocks.png) center center/cover;
+
+}
+
+.wood {
+    /* background: rgb(58, 4, 4); */
+    background: url(./photos/wood.png) center center/cover;
+
+}
+
+.leaves {
+    /* background: green; */
+    background: url(./photos/leaves.png) center center/cover;
+
+}
