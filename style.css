@@ -25,7 +25,7 @@ body {
 .tool-bar {
    display: flex;
    flex-direction: column;
-   justify-content: space-around;  
+   justify-content: space-evenly;  
    align-items: center; 
    box-sizing: border-box;
    width: 150px;
@@ -35,7 +35,7 @@ body {
    color: white;
 }
 
-.tool-bar h4 {
+.tool-bar h5 {
     margin:0;
 }
 
@@ -70,6 +70,16 @@ body {
 
 .inventory:hover {
     border: 1px solid white;
+}
+
+.tool-bar button {
+    font-size: 12px;
+    border: 1px solid white;
+    padding: 12px;
+}
+
+.tool-bar button:hover {
+    opacity: 0.7;
 }
 
 .tile {

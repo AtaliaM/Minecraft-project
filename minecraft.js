@@ -3,7 +3,7 @@
 const mapContainer = document.querySelector(".map-container");
 
 function createMap() {
-
+    mapContainer.innerHTML = "";
     // const mapContainer = document.querySelector(".map-container");
     /////creating the matrix and assigning classes to the tile divs/////
     ///will be inside a makeScreen(). this function will be called also when clicking on the reset button///
@@ -102,8 +102,10 @@ let currentTileChecked = 0; //determines if the user click on the inventory tile
 
 function pickTileFromInventory(event) {
     if (event.currentTarget.classList.length > 1) { //if the inventory isn't empty
+        currentTool.style.border = "5px solid grey";
         currentTile.style.border = "5px solid blue";
         currentTileChecked = 1; //now we can add the tile to the map
+        currentTool = ""; //initializing the current tool so we won't pick another tile from map instead of adding
     }
     else {
         currentTile.style.border = "5px solid red";
@@ -126,12 +128,18 @@ const tools = { "pickaxe": ["rocks"], "shovel": ["dirt"], "axe": ["wood","leaves
 const pickaxe = document.querySelector(".pickaxe img");
 const shovel = document.querySelector(".shovel img");
 const axe = document.querySelector(".axe img");
-console.log(tools);
 let currentTool;
+let previousTool;
+
 
 
 function pickTool(event) {
+    currentTile.style.border = "5px solid grey";
+    if (previousTool) { //changing the previous tool border back to grey when choosing a new tool
+        previousTool.style.border = "5px solid grey";
+    }
     currentTool = event.currentTarget;
+    previousTool = currentTool;
     currentTool.style.border = "5px solid blue";
     console.log(currentTool);
 }
@@ -140,5 +148,10 @@ pickaxe.addEventListener("click", pickTool);
 shovel.addEventListener("click", pickTool);
 axe.addEventListener("click", pickTool);
 
+// function resetMap(event) {
+//     mapContainer.innerHTML = "";
+//     createMap();
+// }
 
-
+const resetButton = document.querySelector("button");
+resetButton.addEventListener("click", createMap);
