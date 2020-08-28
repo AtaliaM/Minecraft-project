@@ -14,11 +14,22 @@ function startGame() {
     const axe = document.querySelector(".axe img");
     let currentTool;
     let previousTool;
-    
+
     
     if (currentTile.classList[1]) {
         currentTile.classList.remove(currentTile.classList[1]);    
     }
+
+    pickaxe.classList.remove("blue-border");
+    pickaxe.classList.remove("red-border");
+    shovel.classList.remove("blue-border");
+    shovel.classList.remove("red-border");
+    axe.classList.remove("blue-border");
+    axe.classList.remove("red-border");
+    pickaxe.classList.add("grey-border");
+    shovel.classList.add("grey-border");
+    axe.classList.add("grey-border");
+
     
     function createMap() {
         mapContainer.innerHTML = "";
@@ -88,7 +99,11 @@ function startGame() {
                 if (currentTile.classList.length > 1) {
                     currentTile.classList.remove(currentTile.classList[1]);
                 }
-                currentTool.style.border = "5px solid blue";
+                // currentTool.style.border = "5px solid blue";
+                previousTool.classList.remove("blue-border");
+                previousTool.classList.remove("red-border");
+                previousTool.classList.add("grey-border");
+                currentTool.classList.add("blue-border");
                 currentTile.classList.add(event.currentTarget.classList[1]); //adding the selected tile class to the inventory
                 event.currentTarget.classList.remove(event.currentTarget.classList[1]); //removing theme-class and adding class 'sky' to the selected tile from map
                 event.currentTarget.classList.add("sky");
@@ -96,7 +111,9 @@ function startGame() {
                 currentTile.style.border = "5px solid grey"; //returning the currTile border color to usual in case it was pushed
             }
             else {
-                currentTool.style.border = "5px solid red";
+                // currentTool.style.border = "5px solid red";
+                currentTool.classList.remove("blue-border");
+                currentTool.classList.add("red-border");
             }
         }
 
@@ -147,11 +164,17 @@ function startGame() {
     function pickTool(event) {
         currentTile.style.border = "5px solid grey";
         if (previousTool) { //changing the previous tool border back to grey when choosing a new tool
-            previousTool.style.border = "5px solid grey";
+            // previousTool.style.border = "5px solid grey";
+            previousTool.classList.remove("blue-border");
+            previousTool.classList.remove("red-border");
+            previousTool.classList.add("grey-border");
         }
         currentTool = event.currentTarget;
         previousTool = currentTool;
-        currentTool.style.border = "5px solid blue";
+        event.currentTarget.classList.remove("grey-border");
+        event.currentTarget.classList.remove("red-border");
+        event.currentTarget.classList.add("blue-border");
+        // currentTool.style.border = "5px solid blue";
         console.log(currentTool);
     }
 
