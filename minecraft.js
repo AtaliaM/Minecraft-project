@@ -133,7 +133,10 @@ function startGame() {
 
     function pickTileFromInventory(event) {
         if (event.currentTarget.classList.length > 1) { //if the inventory isn't empty
-            currentTool.style.border = "5px solid grey";
+            currentTool.classList.remove("red-border");
+            currentTool.classList.remove("blue-border");
+            currentTool.classList.add("grey-border");
+            // currentTool.style.border = "5px solid grey";
             currentTile.style.border = "5px solid blue";
             currentTileClicked = 1; //now we can add the tile to the map
             currentTool = ""; //initializing the current tool so we won't pick another tile from map instead of adding
