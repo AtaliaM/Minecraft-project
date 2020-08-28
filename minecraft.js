@@ -1,3 +1,9 @@
+const startGameButton = document.querySelector(".start-game");
+const beforeScreen = document.querySelector(".before-screen");
+startGameButton.addEventListener("click", function () {
+    beforeScreen.style.display = "none";
+})
+
 function startGame() {
 
     const mapContainer = document.querySelector(".map-container");
@@ -116,6 +122,7 @@ function startGame() {
             currentTool = ""; //initializing the current tool so we won't pick another tile from map instead of adding
         }
         else {
+            
             currentTile.style.border = "5px solid red";
         }
     }
@@ -157,5 +164,5 @@ function startGame() {
 startGame();
 
 ////RESET BUTTON/////
-const resetButton = document.querySelector("button");
+const resetButton = document.querySelector(".reset");
 resetButton.addEventListener("click", startGame);

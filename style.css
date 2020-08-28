@@ -7,11 +7,61 @@ body {
     font-family: 'MinecraftiaRegular';
 }
 
+.before-screen {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 560px;
+    width: 1200px;
+    z-index: 100;
+    background-image: url(./photos/minecraft-wallpaper.jpg);
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 2px 20px white,  0 0 10px grey;
+}
+
+.before-screen h2 {
+    margin: 0;
+}
+
+.before-screen h3 {
+    text-decoration: underline;
+    margin: 8px 0;
+}
+
+.before-screen .instructions {
+    width: 600px;
+    text-align: center;
+    background: white;
+    border: 3px solid black;
+    line-height: 1.6rem;
+    
+}
+
+.before-screen button {
+    width: 150px;
+    height: 30px;
+    border: 2px solid black;
+    margin-top: 8px;
+}
+
+.before-screen button:hover {
+    border: 2px solid white;
+    color: white;
+    background: black;
+    transition-duration: 0.3s;
+}
+
+/* game screen*/
+
 .screen-container {
+    position: relative;
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-end;
     height: 100%;
+    margin-top: 10px;
 }
 
 
@@ -43,8 +93,16 @@ body {
     width: 80px;
     height: 110px;
     box-sizing: border-box;
-    border: 6px solid grey;
+    border: 5px solid grey;
 
+}
+
+.red-border {
+    border: 5px solid red;
+}
+
+.blue-border {
+    border: 5px solid blue;
 }
 
 .tool {
