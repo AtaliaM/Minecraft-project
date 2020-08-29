@@ -103,6 +103,7 @@ body {
 
 .red-border {
     border: 5px solid red;
+    
 }
 
 .blue-border {
@@ -154,8 +155,12 @@ body {
     border:1px solid white;
 }
 
-.removedTile {
-    background: white;
+.cloud {
+    background: url(./photos/cloud.png) center center/cover;
+}
+
+.sun {
+    background: url(./photos/sun.png) center center/cover;
 }
 
 

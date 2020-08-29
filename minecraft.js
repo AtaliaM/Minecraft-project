@@ -15,10 +15,11 @@ function startGame() {
     let currentTool;
     let previousTool;
 
-    
+    currentTile.style.border = "5px solid grey"; 
     if (currentTile.classList[1]) {
-        currentTile.classList.remove(currentTile.classList[1]);    
+        currentTile.classList.remove(currentTile.classList[1]);   
     }
+    console.log(currentTile);
 
     pickaxe.classList.remove("blue-border");
     pickaxe.classList.remove("red-border");
@@ -35,10 +36,10 @@ function startGame() {
         mapContainer.innerHTML = "";
         /////creating the matrix and assigning classes to the tile divs/////
         const matrix = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 5, 5],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 0, 0, 0, 0],
             [0, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 4, 4, 4, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 3, 0, 0, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -73,6 +74,12 @@ function startGame() {
                 else if (matrix[rows][cols] === 4) {
                     tile.classList.add("leaves");
                 }
+                else if (matrix[rows][cols] === 5) {
+                    tile.classList.add("sun");
+                }
+                else {
+                    tile.classList.add("cloud");
+                }
 
                 mapContainer.appendChild(tile);
                 tileId++;
@@ -84,17 +91,18 @@ function startGame() {
     // document.body.appendChild(mapContainer);
 
     //////Pick Tile from Map//////
-    document.querySelectorAll('.tile').forEach(item => { //event listeners with "pickTileFromMap()" to all tiles but the sky tiles
-        if (item.classList[1] !== "sky") {
+    document.querySelectorAll('.tile').forEach(item => { //event listeners with "pickTileFromMap()" to all tiles but the sky/sun/cloud tiles
+        if (item.classList[1] !== "sky" && item.classList[1] !== "sun" && item.classList[1] !== "cloud"){
             item.addEventListener('click', pickTileFromMap);
         }
     });
 
     function pickTileFromMap(event) {
         if (currentTool) { // if a tool has been chosen
-            if (event.currentTarget.classList[1] !== "sky" && (tools[currentTool.classList[0]][0] === event.currentTarget.classList[1])
+            if (event.currentTarget.classList[1] !== "sky" && event.currentTarget.classList[1] !== "sun" && event.currentTarget.classList[1] !== "cloud" && 
+            (tools[currentTool.classList[0]][0] === event.currentTarget.classList[1])
                 || tools[currentTool.classList[0]][1] === event.currentTarget.classList[1]) {
-                // if the clicked tile's [1] class isn't sky && if the theme class in the clicked tile is identical to the tools object value
+                // if the clicked tile's [1] class isn't sky/sun/cloud && if the theme class in the clicked tile is identical to the tools object value
                 console.log("in if");
                 if (currentTile.classList.length > 1) {
                     currentTile.classList.remove(currentTile.classList[1]);
@@ -123,7 +131,7 @@ function startGame() {
     ////Pick Tile from Inventory & Add tile from inventory to map////
     currentTile.addEventListener("click", pickTileFromInventory);
 
-    document.querySelectorAll('.tile').forEach(item => { //event listeners with "pickTileFromInventory()" to all sky tiles
+    document.querySelectorAll('.tile').forEach(item => { //event listeners with "addTileToMap()" to all sky tiles
         if (item.classList[1] === "sky") {
             item.addEventListener('click', addTileToMap);
         }
